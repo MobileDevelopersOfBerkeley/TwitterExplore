@@ -55,7 +55,7 @@ def load_sentiments():
         score of each word, a value from -1 to +1.
         """
 
-        with open('../data/sentiments_better.csv') as sentiment_file:
+        with open('./sentiments_better.csv') as sentiment_file:
               scores = [line.split(',') for line in sentiment_file]
               return {word: float(score.strip()) for word, score in scores}
 
@@ -225,39 +225,6 @@ def get_tweets(twitter_info, topic_string): #make this have a parameter that acc
     except TwitterSearchException as e:
         print(e)
         return []
-
-
-def getCLIArg(index):
-    assert index < len(sys.argv) and index >= 0, "Argument not passed in"
-    return sys.argv
-
-
-def save_tweets_to_file():
-    tweet_count = 0
-    text_file = open("Tweets_short.txt", "w")
-    for tweet in get_tweets(topic_string_global):
-        if tweet_count > 500:
-            break
-        # save all the tweets to a text file
-        print(tweet_count)
-        tweet_count = tweet_count + 1
-        text_file.write(json.dumps(tweet) + "\n")
-
-    text_file.close()
-        
-    print("saved " + str(tweet_count) + " tweets")
-
-def read_tweets_from_file():
-    with open("Tweets_short.txt") as f:
-        json_list = f.readlines() #list of json strings 
-    
-    tweets_list = []
-
-    for json_string in json_list:
-        print(json_string)
-        tweets_list.append(json.loads(json_string))
-
-    return tweets_list
 
 coord_sent_dict = {}
 
