@@ -200,8 +200,8 @@ def get_location(location_str):
 
 
 def get_tweets(twitter_info, topic_string): #make this have a parameter that accepts any topic!
-    assert consumer_key in twitter_info and consumer_secret in twitter_info \
-            and access_token in twitter_info and access_token_secret in twitter_info, "Empty Twitter API info"
+    assert 'consumer_key' in twitter_info and 'consumer_secret' in twitter_info \
+            and 'access_token' in twitter_info and 'access_token_secret' in twitter_info, "Empty Twitter API info"
     assert topic_string != None and topic_string != '', "Empty string"
 
     try:
